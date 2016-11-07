@@ -11,7 +11,7 @@ public class test {
 		Map<String, Object> zhuxtData=new HashMap<String, Object>();
 		String[] zhuxtName=new String[zhuxtData.size()];
 		int[] zhuxtNum=new int[zhuxtData.size()];
-		zhuxtData.put("鹿城区司法局",0);
+		zhuxtData.put("鹿城区司法局1111",0);
 //		for(int i=1;i<zhuxtData.size();i++){
 //			zhuxtName[i]="a";
 //		}
