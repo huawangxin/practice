@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <script type="text/javascript"
+    		src="js/my.js">
+    </script>
+    <script type="text/javascript">
+    	/*检查用户名是否可用*/
+    	function checkName(){
+    		//1.创建ajax对象
+    		var xhr = getXhr();
+    		//2.绑定回调函数
+    		xhr.onreadystatechange=function(){
+    			if(xhr.readyState==4&&xhr.status==200){
+    				//获取响应的数据
+    				var result = xhr.responseText;
+    				//将结果显示到id为m1的span标记中
+    				document.getElementById("m1").innerHTML=result;
+    			}
+    		};
+    		//3.创建请求
+    		//获取用户在文本框中填写的用户名
+    		var str = document.getElementById("name").value;
+    		//使用js中encodeURI()的方法对请求资源
+    		//路径进行UTF-8格式的编码
+    		var uri='check?uname='+str;
+    		xhr.open('get',encodeURI(uri),true);
+    		//4.发送请求    	
+    		xhr.send(null);
+    	}    
+    </script>
+  </head>
+  
+  <body>
+    <form action="" method="post">
+    用户名:<input type="text" name="name" 
+    id="name" onblur="checkName()"/><span id="m1" style="color:red"></span>
+    <br>
+    密码:<input type="password" name="pwd" id="pwd"/><br>
+    <input type="submit" value="注册"/>    
+    </form>
+  </body>
+</html>

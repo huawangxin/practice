@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <title>a1.html</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="Context-Language" content="zh-CN"/>
+<meta name="author" content="MrWang"/>
+<meta name="Copyright" content="版权信息"/>
+<meta name="description" content="细节描述"/>
+<meta name="keywords" content="关键字"/>
+    <script type="text/javascript">
+    	/*创建xhr对象*/
+    	function getXhr(){
+    		var xhr = null;
+    		if(window.XMLHttpRequest){
+    			xhr = new XMLHttpRequest();
+    		}else{
+    			xhr = new ActiveXObject('Microsoft.XMLHttp');
+    		}
+    		return xhr;
+    	}
+    	/*发送一个get请求，将服务器返回的
+    	一小段文本信息展示到页面中*/
+    	function getText(){
+    		//1.创建xhr对象
+    		var xhr = getXhr();
+    		//2.设置回调函数
+    		xhr.onreadystatechange=function(){
+    			if(xhr.readyState==4&&xhr.status==200){
+    				var str = xhr.responseText;
+    				//将str显示到页面中
+    				var objDiv = 
+    				 document.getElementById('d1');
+    				 objDiv.innerHTML = str;
+    			}
+    		};
+    		//3.创建请求
+    		xhr.open('get','some',true);
+    		//4.发送请求
+    		xhr.send(null);
+    	
+    	}    	
+    </script>
+  </head>
+  
+  <body>
+    <div id="d1"></div><br>
+    <input type="button" onclick="getText()"
+    	value="发送ajax请求"/>
+  </body>
+</html>

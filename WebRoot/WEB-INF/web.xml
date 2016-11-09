@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+  <servlet>
+    <servlet-name>SomeServlet</servlet-name>
+    <servlet-class>ajax.SomeServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>CheckNameServlet</servlet-name>
+    <servlet-class>ajax.CheckNameServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>CheckName2Servlet</servlet-name>
+    <servlet-class>ajax.CheckName2Servlet</servlet-class>
+  </servlet>
+
+
+
+  <servlet-mapping>
+    <servlet-name>SomeServlet</servlet-name>
+    <url-pattern>/some</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CheckNameServlet</servlet-name>
+    <url-pattern>/check</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CheckName2Servlet</servlet-name>
+    <url-pattern>/check2</url-pattern>
+  </servlet-mapping>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>

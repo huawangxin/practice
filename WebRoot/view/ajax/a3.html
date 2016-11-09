@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <title>post方式提交数据</title>	
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <script type="text/javascript"
+    		src="js/my.js"></script>
+    <script type="text/javascript">
+    	function checkName(){
+    		//1.创建xhr对象
+    		var xhr = getXhr();
+    		//2.设置回调函数
+    		xhr.onreadystatechange=function(){
+    			if(xhr.readyState==4&&xhr.status==200){
+    				//获取响应的数据
+    				var result = xhr.responseText;
+    				//将结果显示到id为m1的span标记中
+    				$("m1").innerHTML=result;
+    			}
+    		};
+    		//3.创建请求    		
+    		xhr.open('post','check2',true);
+    		xhr.setRequestHeader(
+    			'content-type',
+    			'application/x-www-form-urlencoded');
+    		//根据id定位文本框
+    		var txtName = $("t1");
+    		//4.发送请求
+    		xhr.send('uname='+txtName.value);
+    	}
+    </script>
+  </head>  
+  <body>
+    <form action="" method="post">
+    用户名:<input type="text" name="name" 
+    id="t1" onblur="checkName()"/><span id="m1" style="color:red"></span>
+    <br>
+    密码:<input type="password" name="pwd" id="pwd"/><br>
+    <input type="submit" value="注册"/>    
+    </form>
+  </body>
+</html>

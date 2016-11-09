@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <title>test.html</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  	<script type="text/javascript">
+  		function getXhr(){
+  			var xhr = null;
+  			//判断浏览器是否支持xhr对象
+  			if(window.XMLHttpRequest){
+  				xhr =  new XMLHttpRequest();
+  			}else{//IE的早期版本
+  				xhr = new ActiveXObject('Microsoft.XMLHttp');
+  			}  			
+  			return xhr;
+  		}
+  	</script>
+  </head>  
+  <body>
+    <input type="button" onclick="alert(getXhr())"  
+    		value="测试"/>
+  </body>
+</html>
