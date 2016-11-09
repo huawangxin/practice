@@ -16,9 +16,22 @@
     <servlet-name>CheckName2Servlet</servlet-name>
     <servlet-class>ajax.CheckName2Servlet</servlet-class>
   </servlet>
-
-
-
+  <servlet>
+    <servlet-name>GetEmpServlet</servlet-name>
+    <servlet-class>ajax.GetEmpServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>GetCityServlet</servlet-name>
+    <servlet-class>ajax.GetCityServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetEmpServlet</servlet-name>
+    <url-pattern>/getEmp</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GetCityServlet</servlet-name>
+    <url-pattern>/getCity</url-pattern>
+  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>SomeServlet</servlet-name>
     <url-pattern>/some</url-pattern>
