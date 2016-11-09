@@ -31,7 +31,7 @@ public class CheckNameServlet extends HttpServlet {
 		//使用下面这句的解码原因是因为容器
 		//默认的解码方式是iso-8859-1【我测试时用的是tomcat设置为gbk】
 		//所以，如果修改了容器的默认解码方式，
-		//则下面的语句就不需要了
+		//则下面的语句就不需要了 
 		uname = new String(uname.getBytes("gbk"),"utf-8");
 		System.out.println(uname);
 		//根据验证结果返回对应的说明信息

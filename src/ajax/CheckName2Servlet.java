@@ -31,6 +31,7 @@ public class CheckName2Servlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		String uname = 
 			request.getParameter("uname");
+			
 		System.out.println(uname);
 		if(uname.equals("张三")){
 			out.print("用户名重复");

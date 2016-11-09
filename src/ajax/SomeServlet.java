@@ -23,6 +23,7 @@ public class SomeServlet extends HttpServlet {
 		//返回给客户端的一小段文本
 		out.println("来自星星的你");
 		out.close();
+		
 	}
 
 }
