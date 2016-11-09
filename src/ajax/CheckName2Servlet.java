@@ -8,9 +8,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * ajax的post提交
+ * @author huawangxin
+ *
+ * 
+ * @date 2016年11月9日 下午3:21:44
+ */
 public class CheckName2Servlet extends HttpServlet {
 
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2010973560621086803L;
+
 	public void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		//获取post方式提交的中文

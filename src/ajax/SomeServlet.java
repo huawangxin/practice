@@ -10,6 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 
 public class SomeServlet extends HttpServlet {
 
+	/**
+	 * 序列化
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 

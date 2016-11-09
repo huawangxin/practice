@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>a1.html</title>
+    <title>ajax请求实例</title>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta http-equiv="Context-Language" content="zh-CN"/>
 <meta name="author" content="MrWang"/>
@@ -28,16 +28,14 @@
     			if(xhr.readyState==4&&xhr.status==200){
     				var str = xhr.responseText;
     				//将str显示到页面中
-    				var objDiv = 
-    				 document.getElementById('d1');
+    				var objDiv = document.getElementById('d1');
     				 objDiv.innerHTML = str;
     			}
     		};
     		//3.创建请求
-    		xhr.open('get','some',true);
+    		xhr.open('get','http://localhost:8080/practice/some',true);
     		//4.发送请求
     		xhr.send(null);
-    	
     	}    	
     </script>
   </head>

@@ -23,7 +23,7 @@
     		var str = document.getElementById("name").value;
     		//使用js中encodeURI()的方法对请求资源
     		//路径进行UTF-8格式的编码
-    		var uri='check?uname='+str;
+    		var uri='http://localhost:8080/practice/check?uname='+str;
     		xhr.open('get',encodeURI(uri),true);
     		//4.发送请求    	
     		xhr.send(null);
