@@ -1,0 +1,75 @@
+概述java类加载机制
+执行java XXX，JVM将XXX.class加载到内存中。
+
+其过程就是类加载过程：
+1、寻找jre目录，找到jre.dll文件，并初始化jvm；
+2、产生一个Bootstrap Loader（启动类加载器）；
+3、Bootstrap Loader自动加载Extended Loader（标准扩展类加载器），并将其父Loader设为Bootstrap Loader；
+4、Bootstrap Loader自动加载AppClass Loader（系统类加载器），并将其父Loader设为Extended Loader；
+5、最后由AppClass Loader加载XXX类。
+说明：
+1、Bootstrap Loader（启动类加载器）：加载System.getProperty("sun.boot.class.path")所指定的路径或jar。
+2、Extended Loader（标准扩展类加载器ExtClassLoader）：加载System.getProperty("java.ext.dirs")所指定的路径或jar。
+      在使用Java运行程序时，也可以指定其搜索路径，例如：java -Djava.ext.dirs=d:\projects\testproj\classes XXX
+3、AppClass Loader（系统类加载器AppClassLoader）：加载System.getProperty("java.class.path")所指定的路径或jar。
+      在使用Java运行程序时，也可以加上-cp来覆盖原有的Classpath设置，例如： java -cp ./lavasoft/classes XXX
+   ExtClassLoader和AppClassLoader在JVM启动后，会在JVM中保存一份，并且在程序运行中无法改变其搜索路径。
+      如果想在运行时从其他搜索路径加载类，就要产生新的类加载器。
+      
+类加载器的特点： 
+1、运行一个程序时，总是由AppClass Loader（系统类加载器）开始加载指定的类。
+2、在加载类时，每个类加载器会将加载任务上交给其父，如果其父找不到，再由自己去加载。
+3、Bootstrap Loader（启动类加载器）是最顶级的类加载器了，其父加载器为null.
+
+类加载器的获取：
+public class HelloWorld { 
+        public static void main(String[] args) { 
+                HelloWorld hello = new HelloWorld(); 
+                Class c = hello.getClass(); 
+                ClassLoader loader = c.getClassLoader(); 
+                System.out.println(loader); 
+                System.out.println(loader.getParent()); 
+                System.out.println(loader.getParent().getParent()); 
+        } 
+}
+从上面的结果可以看出，并没有获取到ExtClassLoader的父Loader，原因是Bootstrap Loader（启动类加载器）是用C语言实现的，
+找不到一个确定的返回父Loader的方式，于是就返回null。
+
+类加载有三种方式：
+1、命令行启动应用时候由JVM初始化加载
+2、通过Class.forName()方法动态加载
+3、通过ClassLoader.loadClass()方法动态加载【再执行newInstance可以初始化】
+public class HelloWorld { 
+        public static void main(String[] args) throws ClassNotFoundException { 
+                ClassLoader loader = HelloWorld.class.getClassLoader(); 
+                System.out.println(loader); 
+                //使用ClassLoader.loadClass()来加载类，不会执行初始化块 
+                loader.loadClass("Test2"); 
+                //使用Class.forName()来加载类，默认会执行初始化块 
+//                Class.forName("Test2"); 
+                //使用Class.forName()来加载类，并指定ClassLoader，初始化时不执行静态块 
+//                Class.forName("Test2", false, loader); 
+        } 
+}
+public class Test2 { 
+        static { 
+                System.out.println("静态初始化块执行了！"); 
+        } 
+}
+
+同一个ClassLoader加载的类文件，只有一个Class实例。但是，如果同一个类文件被不同的ClassLoader载入，
+则会有两份不同的ClassLoader实例（前提是着两个类加载器不能用相同的父类加载器）。
+
+
+
+
+
+java程序的赋值步骤为：
+父类的静态变量赋值
+自身的静态变量赋值
+父类成员变量赋值
+父类块赋值
+父类构造器赋值
+自身成员变量赋值
+自身块赋值
+自身构造器赋值
