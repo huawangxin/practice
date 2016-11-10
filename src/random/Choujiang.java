@@ -1,3 +1,5 @@
+package src.random;
+
 /**
  * 简单抽奖线程
  * @author huawangxin

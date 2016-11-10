@@ -1,4 +1,4 @@
-package ajax;
+package src.ajax;
 
 import java.io.IOException;
 import java.io.PrintWriter;

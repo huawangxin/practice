@@ -1,4 +1,4 @@
-package sort;
+package src.sort;
 
 /**
  * 排序工具类

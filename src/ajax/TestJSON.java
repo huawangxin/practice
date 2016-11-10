@@ -1,4 +1,4 @@
-package ajax;
+package src.ajax;
 
 import java.util.List;
 

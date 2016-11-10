@@ -1,4 +1,4 @@
-package exam;
+package src.exam;
 
 /**
  * 

@@ -1,4 +1,4 @@
-package ajax;
+package src.ajax;
 
 public class Employee {
 	private int id;

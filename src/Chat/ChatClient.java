@@ -1,4 +1,4 @@
-package Chat.Client;
+package src.Chat;
 
 import java.awt.*;
 import java.awt.event.*;
