@@ -6,24 +6,25 @@
 	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
   <servlet>
     <servlet-name>SomeServlet</servlet-name>
-    <servlet-class>ajax.SomeServlet</servlet-class>
+    <servlet-class>src.ajax.SomeServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>CheckNameServlet</servlet-name>
-    <servlet-class>ajax.CheckNameServlet</servlet-class>
+    <servlet-class>src.ajax.CheckNameServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>CheckName2Servlet</servlet-name>
-    <servlet-class>ajax.CheckName2Servlet</servlet-class>
+    <servlet-class>src.ajax.CheckName2Servlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>GetEmpServlet</servlet-name>
-    <servlet-class>ajax.GetEmpServlet</servlet-class>
+    <servlet-class>src.ajax.GetEmpServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>GetCityServlet</servlet-name>
-    <servlet-class>ajax.GetCityServlet</servlet-class>
+    <servlet-class>src.ajax.GetCityServlet</servlet-class>
   </servlet>
+  
   <servlet-mapping>
     <servlet-name>GetEmpServlet</servlet-name>
     <url-pattern>/getEmp</url-pattern>
@@ -44,6 +45,34 @@
     <servlet-name>CheckName2Servlet</servlet-name>
     <url-pattern>/check2</url-pattern>
   </servlet-mapping>
+  <!-- 查看用户 -->
+  <servlet>
+  	<servlet-name>helloServlet</servlet-name>
+  	<servlet-class>src.servlet.HelloServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>helloServlet</servlet-name>
+  	<url-pattern>/hi</url-pattern>
+  </servlet-mapping>
+  <!-- 添加用户 -->
+  <servlet>
+  	<servlet-name>hh</servlet-name>
+  	<servlet-class>src.servlet.AddEmpServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>hh</servlet-name>
+  	<url-pattern>/addEmp</url-pattern>
+  </servlet-mapping>
+  <!-- 查看用户 -->
+  <servlet>
+  	<servlet-name>mohu</servlet-name>
+  	<servlet-class>src.servlet.SelectEmpMohu</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>mohu</servlet-name>
+  	<url-pattern>/selectEmp</url-pattern>
+  </servlet-mapping>
+  
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
