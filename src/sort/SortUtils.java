@@ -39,7 +39,7 @@ public class SortUtils {
 				if(num[i]>num[j]){
 					tempNum=num[i];
 					num[i]=num[j];
-					num[j]=num[i];
+					num[j]=tempNum;
 				}
 			}
 		}
