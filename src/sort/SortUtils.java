@@ -48,43 +48,42 @@ public class SortUtils {
 	/**
 	 * 快速排序
 	 * 
-	 * 从数列中挑出一个元素，称为“基准” 重新排序数列，
-	 * 所有元素比基准值小的摆放在基准前面，所有元素比
-	 * 基准值大的摆在基准的后面（相同的数可以到任一边）。
-	 * 在这个分割之后，该基准是它的最后位置。这个称为分割（partition）操作。
+	 * 从数列中挑出一个元素，称为“基准” 重新排序数列， 所有元素比基准值小的摆放在基准前面，所有元素比
+	 * 基准值大的摆在基准的后面（相同的数可以到任一边）。 在这个分割之后，该基准是它的最后位置。这个称为分割（partition）操作。
+	 * 
 	 * @param num
 	 * @param start
 	 * @param end
 	 * @return
 	 */
-	public static int[] quickSort(int[] num,int start,int end){
-		if(start<end){
-			int base=num[start];
-			int i=start,j=end;
-			while(num[j]>base&&j>=start){
+	public static int[] quickSort(int[] num, int start, int end) {
+		if (start < end) {
+			int base = num[start];
+			int i = start, j = end;
+			while (num[j] > base && j >= start) {
 				j--;
 			}
-			while(num[i]<base&&i<end){
+			while (num[i] < base && i < end) {
 				i++;
 			}
-			if(i<=j){
-				tempNum=num[i];
-				num[i]=num[j];
-				num[j]=tempNum;
+			if (i <= j) {
+				tempNum = num[i];
+				num[i] = num[j];
+				num[j] = tempNum;
 				i++;
 				j--;
 			}
-			if(start<j){
-				num=quickSort(num, start, j);
+			if (start < j) {
+				num = quickSort(num, start, j);
 			}
-			if(end>i){
-				num=quickSort(num, i, end);
+			if (end > i) {
+				num = quickSort(num, i, end);
 			}
 		}
 		return num;
 	}
 	/**
-	 * 选择排序
+	 * 简单选择排序
 	 * 
 	 * 在未排序序列中找到最小元素，存放到排序序列的起始位置
 	 * 再从剩余未排序元素中继续寻找最小元素，然后放到排序序列末尾。
@@ -104,6 +103,65 @@ public class SortUtils {
 			num[k]=tempNum;
 		}
 		return num;
+	}
+	/**
+	 * 堆排序 堆排序是一种树形选择排序，是对直接选择排序的有效改进。
+	 * 定义如下：具有n个元素的序列（h1,h2,…,hn),当且仅当满足（hi>=h2i,hi>=2i+1）或（hi<=h2i,hi<=2i+1）(i=1,2,…,n/2)时称之为堆。
+	 * 在这里只讨论满足前者条件的堆。由堆的定义可以看出，堆顶元素（即第一个元素）必为最大项（大顶堆）。完全二叉树
+	 * 可以很直观地表示堆的结构。堆顶为根，其它为左子树、右子树。初始时把要排序的数的序列看作是一棵顺序存储的二叉树，调整它们的存储序，使之成为一个堆，
+	 * 这时堆的根节点的数最大。然后将根节点与堆的最后一个节点交换。然后对前面(n-1)个数重新调整使之成为堆。依此类推，直到只有两个节点的堆，并对它们
+	 * 作交换，最后得到有n个节点的有序序列。从算法描述来看，堆排序需要两个过程，一是建立堆，二是堆顶与堆的最后一个元素交换位置。所以堆排序有两个函数组
+	 * 成。一是建堆的渗透函数，二是反复调用渗透函数实现排序的函数。
+	 * 
+	 * @author huawangxin
+	 * @param a
+	 */
+	public static int[] heapSort(int[] a) {
+		int arrayLength = a.length;
+		// 循环建堆
+		for (int i = 0; i < arrayLength - 1; i++) {
+			// 建堆
+			buildMaxHeap(a, arrayLength - 1 - i);
+			// 交换堆顶和最后一个元素
+			tempNum = a[0];
+			a[0] = a[arrayLength - 1 - i];
+			a[arrayLength - 1 - i] = tempNum;
+		}
+		return a;
+	}
+	/*
+	 * 建堆函数
+	 */
+	private static void buildMaxHeap(int[] data, int lastIndex) {
+		// 从lastIndex处节点（最后一个节点）的父节点开始
+		for (int i = (lastIndex - 1) / 2; i >= 0; i--) {
+			// k保存正在判断的节点
+			int k = i;
+			// 如果当前k节点的子节点存在
+			while (k * 2 + 1 <= lastIndex) {
+				// k节点的左子节点的索引
+				int biggerIndex = 2 * k + 1;
+				// 如果biggerIndex小于lastIndex，即biggerIndex+1代表的k节点的右子节点存在
+				if (biggerIndex < lastIndex) {
+					// 如果右子节点的值较大
+					if (data[biggerIndex] < data[biggerIndex + 1]) {
+						// biggerIndex总是记录较大子节点的索引
+						biggerIndex++;
+					}
+				}
+				// 如果k节点的值小于其较大的子节点的值
+				if (data[k] < data[biggerIndex]) {
+					// 交换他们
+					tempNum = data[k];
+					data[k] = data[biggerIndex];
+					data[biggerIndex] = tempNum;
+					// 将biggerIndex赋予k，开始while循环的下一次循环，重新保证k节点的值大于其左右子节点的值
+					k = biggerIndex;
+				} else {
+					break;
+				}
+			}
+		}
 	}
 	/**
 	 * 直接插入排序
